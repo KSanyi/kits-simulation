@@ -18,6 +18,26 @@ public class RandomNumberGenerator {
         return -Math.log(random.nextDouble()) / lambda;
     }
     
+    public static double generateNormal(double mu, double sigma) {
+        return random.nextGaussian() * sigma + mu;
+    }
+    
+    public static double generateStNormal() {
+        return generateNormal(0, 1);
+    }
+    
+    public static double generateCauchy() {
+        return Math.tan(Math.PI * (random.nextDouble() - 0.5));
+    }
+    
+    public static double generateBoundedCauchy(double boundWidth) {
+        double result = Double.MAX_VALUE;
+        while(result < -boundWidth / 2 || result > boundWidth / 2) {
+            result = Math.tan(Math.PI * (random.nextDouble() - 0.5));
+        }
+        return result;
+    }
+    
 }
 
 
