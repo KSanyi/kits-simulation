@@ -20,7 +20,7 @@ public class CoinTossesSimulation {
             if(i % 100 == 0) {
                 Result result = Result.calculate(i, headsCount);
                 results.add(result);
-                printResults(headsCount, i);
+                System.out.println(result);
                 System.out.println("Max diff: " + calculateMaxDiff(results));
             }
             //results.add(coin.toss());
@@ -34,20 +34,7 @@ public class CoinTossesSimulation {
         return results.stream().mapToLong(r -> r.diffFromExpectation).max().getAsLong();
     }
 
-    private static void printResults(long headsCount, int i) {
-        System.out.println("After " + i + " tosses: " + (headsCount - i / 2) + " " + (((double)headsCount/i) - 0.5));
-    }
-    
-    private static class Result {
-        final long n;
-        final long diffFromExpectation;
-        final double ratioDiffFromExpectation;
-        
-        public Result(long n, long diffFromExpectation, double ratioDiffFromExpectation) {
-            this.n = n;
-            this.diffFromExpectation = diffFromExpectation;
-            this.ratioDiffFromExpectation = ratioDiffFromExpectation;
-        }
+    private static record Result(long n, long diffFromExpectation, double ratioDiffFromExpectation) {
         
         static Result calculate(long n, long headsCount) {
             return new Result(n, (headsCount - n / 2), ((double)headsCount/n) - 0.5);
@@ -55,7 +42,7 @@ public class CoinTossesSimulation {
         
         @Override
         public String toString() {
-            return "After " + n + " tosses: " + diffFromExpectation + " " + ratioDiffFromExpectation;
+            return String.format("After %d tosses: %d %.4f", n, diffFromExpectation, ratioDiffFromExpectation);
         }
     }
 

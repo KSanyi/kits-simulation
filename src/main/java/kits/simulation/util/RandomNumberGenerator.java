@@ -12,7 +12,7 @@ public class RandomNumberGenerator {
         return random.nextDouble() * (b - a) + a;
     }
     
-    public static double generateExponetial(double lambda) {
+    public static double generateExponential(double lambda) {
         if(lambda < 0) throw new IllegalArgumentException("lambda < 0");
         
         return -Math.log(random.nextDouble()) / lambda;

@@ -24,7 +24,7 @@ public class WaitingTimesSimulation {
         // a)
         List<Double> results = new ArrayList<>();
         for(int i=0;i<N;i++) {
-            results.add(simulate(() -> RandomNumberGenerator.generateExponetial(0.1)));
+            results.add(simulate(() -> RandomNumberGenerator.generateExponential(0.1)));
         }
         results.stream().mapToDouble(d -> d).average().ifPresent(System.out::println);
         

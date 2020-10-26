@@ -31,7 +31,6 @@ public class GBMGenerator {
         }
         
         return result;
-        
     }
     
 }

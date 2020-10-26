@@ -22,7 +22,7 @@ public class ElectionSimulation {
 
 class Poll {
     
-    private static final double CANDIDATE_1_RATIO = 0.55;
+    private static final double CANDIDATE_1_RATIO = 0.53;
     private static final int POLL_SIZE = 1000;
     
     private final Random random = new Random();

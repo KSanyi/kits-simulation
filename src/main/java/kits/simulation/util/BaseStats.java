@@ -2,30 +2,8 @@ package kits.simulation.util;
 
 import java.util.Collection;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+public record BaseStats(double min, double max, double avg, double stDev, long count) {
 
-public class BaseStats {
-
-    public final double min;
-    public final double max;
-    public final double avg;
-    public final double stDev;
-    public final long count;
-    
-    public BaseStats(double min, double max, double avg, double stDev, long count) {
-        this.min = min;
-        this.max = max;
-        this.avg = avg;
-        this.stDev = stDev;
-        this.count = count;
-    }
-    
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
-    
     public static BaseStats calculate(Collection<Double> values) {
         
         if(values.isEmpty()) throw new IllegalArgumentException("Can not calculate stats for empty values");
